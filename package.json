@@ -1,0 +1,33 @@
+{
+	"name": "node-jbj-nlp",
+	"version": "1.0.0",
+	"description": "Natural text processing for JBJ",
+	"main": "index.js",
+	"scripts": {
+		"test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/castorjs/node-jbj-natural.git"
+	},
+	"keywords": [
+		"jbj",
+		"filters"
+	],
+	"author": "Nicolas Thouvenin <nthouvenin@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/castorjs/node-jbj-natural/issues"
+	},
+	"homepage": "https://github.com/castorjs/node-jbj-natural",
+	"dependencies": {
+		"natural": "^0.2.1"
+	},
+	"peerDependencies": {
+		"jbj": "^4.0.0"
+	},
+	"devDependencies": {
+		"istanbul": "^0.2.14",
+		"mocha": ">=1.8.1"
+	}
+}
