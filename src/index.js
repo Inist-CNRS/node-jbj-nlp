@@ -3,20 +3,49 @@ import anglicize from 'anglicize';
 module.exports = function (exec, execmap) {
   const filters = {};
 
+  /**
+   * Anglicize the input, ie. deletes the diacritics
+   * @param  {String} input
+   * @return {String} input without diacritics
+   */
   filters.anglicize = function (input, args) {
-    return exec(args, arg => anglicize(input), "anglicize");
+    return exec(args, () => anglicize(input), "anglicize");
   };
 
+  /**
+   * Tokenize the input
+   * @param  {String} input
+   * @param  {String|RegExp|Boolean} args  true: default tokenization
+   *                                       string: predefined tokenization
+   *                                       RegExp: tokenization with the given regexp
+   * @return {Array} tokens
+   */
   filters.tokenize = function (input, args) {
     return exec(args, arg => { return tokenize(input, arg); }, "tokenize");
   };
 
+  /**
+   * Count tokenized words
+   * @param  {String} input
+   * @param  {String|RegExp|Boolean} args  true: default tokenization
+   *                                       string: predefined tokenization
+   *                                       RegExp: tokenization with the given regexp
+   * @return {Integer} number of words
+   */
   filters.countWords = function (input, args) {
     return exec(args, function (arg) {
       return tokenize(input, arg).length;
     }, "countWords");
   };
 
+  /**
+   * Count characters
+   * @param  {String} input
+   * @param  {String|RegExp|Boolean} args  true: count every characters
+   *                                       string: count using a predefined setting
+   *                                       RegExp: count characters that match the regexp
+   * @return {Integer} number of characters
+   */
   filters.countCharacters = function (input, args) {
     return exec(args, function (arg) {
       if (arg === true) { return input.length; }
@@ -29,6 +58,14 @@ module.exports = function (exec, execmap) {
   return filters;
 }
 
+/**
+ * Tokenize the input
+ * @param  {String} input
+ * @param  {String|RegExp|Boolean} args  true: default tokenization
+ *                                       string: predefined tokenization
+ *                                       RegExp: tokenization with the given regexp
+ * @return {Array} tokens
+ */
 function tokenize(input, arg) {
   switch (arg) {
   case true:
