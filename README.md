@@ -22,15 +22,64 @@ With [npm](http://npmjs.org) do:
 ## Filters
 
 <a id="tokenize"></a>
-### tokenize: *word* | *treebank* | */regex_expression/*
-tokenise a string
+### anglicize: *true*
+Anglicize a string
 
 ```javascript
 
 	var stylesheet = {
-           "set": "my dog hasn't any fleas.",
-           "tokenize" : "Treebank"
-    };
-     JBJ.render(stylesheet, console.log);
+    "set": "ÂÇİĞÖŞÜÑ âçığöşüñ",
+    "anglicize": true
+  };
+  JBJ.render(stylesheet, console.log);
+  // ACIGOSUN acigosun
+
+```
+
+### countCharacters: *true* | *slug* | */regex_expression/*
+Count characters. Options:
+  - `true`: all characters, including white spaces
+  - `slug`: alphanumeric characters
+  - `regex`: characters matching the regex
+
+```javascript
+
+var stylesheet = {
+  "set": "L'arbre de Jean-Claude est tombé.",
+  "countCharacters" : true
+};
+JBJ.render(stylesheet, console.log);
+// 33
+
+```
+
+### countWords: see the *tokenized* filter for the arguments
+Count tokenized words
+
+```javascript
+
+	var stylesheet = {
+    "set": "L'arbre de Jean-Claude est tombé.",
+    "countWords" : true
+  };
+  JBJ.render(stylesheet, console.log);
+  // 6
+
+```
+
+### tokenize: *true* | *slug* | */regex_expression/*
+Tokenise a string.Options:
+  - `true`: split on white spaces and ponctuation, keep dashes and quotes
+  - `slug`: split on non-alphanumeric characters
+  - `regex`: split with the given regex
+
+```javascript
+
+	var stylesheet = {
+    "set": "L'arbre de Jean-Claude est tombé.",
+    "tokenize" : true
+  };
+  JBJ.render(stylesheet, console.log);
+  // ["L'","arbre","de","Jean-Claude","est","tombé"]
 
 ```

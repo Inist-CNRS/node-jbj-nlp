@@ -1,0 +1,51 @@
+{
+  "Anglicize #1": {
+    "input": "ÂÇİĞÖŞÜÑ âçığöşüñ",
+    "stylesheet": {
+      "anglicize": true
+    },
+    "expected": "ACIGOSUN acigosun"
+  },
+  "Tokenize #1": {
+    "input": "L'arbre de Jean-Claude est tombé.",
+    "stylesheet": {
+      "tokenize": true
+    },
+    "expected": ["L'","arbre","de","Jean-Claude","est","tombé"]
+  },
+  "Tokenize #2": {
+    "input": "l-arbre-de-jean-claude-est-tombe",
+    "stylesheet": {
+      "tokenize": "slug"
+    },
+    "expected": ["l","arbre","de","jean","claude","est","tombe"]
+  },
+  "Count words #1": {
+    "input": "L'arbre de Jean-Claude est tombé.",
+    "stylesheet": {
+      "countWords": true
+    },
+    "expected": 6
+  },
+  "Count words #2": {
+    "input": "l-arbre-de-jean-claude-est-tombe",
+    "stylesheet": {
+      "countWords": "slug"
+    },
+    "expected": 7
+  },
+  "Count characters #1": {
+    "input": "L'arbre de Jean-Claude est tombé.",
+    "stylesheet": {
+      "countCharacters": true
+    },
+    "expected": 33
+  },
+  "Count characters #2": {
+    "input": "l-arbre-de-jean-claude-est-tombe",
+    "stylesheet": {
+      "countCharacters": "slug"
+    },
+    "expected": 26
+  }
+}
