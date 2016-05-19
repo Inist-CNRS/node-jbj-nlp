@@ -8,8 +8,8 @@ module.exports = function (exec, execmap) {
    * @param  {String} input
    * @return {String} input without diacritics
    */
-  filters.anglicize = function (input, args) {
-    return exec(args, () => anglicize(input), "anglicize");
+  filters.anglicize = function (input, args, next) {
+    return exec(args, () => next(null, anglicize(input)), "anglicize");
   };
 
   /**
@@ -20,8 +20,8 @@ module.exports = function (exec, execmap) {
    *                                       RegExp: tokenization with the given regexp
    * @return {Array} tokens
    */
-  filters.tokenize = function (input, args) {
-    return exec(args, arg => { return tokenize(input, arg); }, "tokenize");
+  filters.tokenize = function (input, args, next) {
+    return exec(args, arg => next(null, tokenize(input, arg)), "tokenize");
   };
 
   /**
@@ -32,10 +32,8 @@ module.exports = function (exec, execmap) {
    *                                       RegExp: tokenization with the given regexp
    * @return {Integer} number of words
    */
-  filters.countWords = function (input, args) {
-    return exec(args, function (arg) {
-      return tokenize(input, arg).length;
-    }, "countWords");
+  filters.countWords = function (input, args, next) {
+    return exec(args, arg => next(null, tokenize(input, arg).length), "countWords");
   };
 
   /**
@@ -46,12 +44,12 @@ module.exports = function (exec, execmap) {
    *                                       RegExp: count characters that match the regexp
    * @return {Integer} number of characters
    */
-  filters.countCharacters = function (input, args) {
+  filters.countCharacters = function (input, args, next) {
     return exec(args, function (arg) {
-      if (arg === true) { return input.length; }
-      if (arg === 'slug') { return input.replace(/-/g, '').length; }
+      if (arg === true) { return next(null, input.length); }
+      if (arg === 'slug') { return next(null, input.replace(/-/g, '').length); }
 
-      return Array.from(input).filter(c => c.match(arg)).length;
+      return next(null, Array.from(input).filter(c => c.match(arg)).length);
     }, "countWords");
   };
 
