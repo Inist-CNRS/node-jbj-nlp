@@ -21,7 +21,7 @@ With [npm](http://npmjs.org) do:
 
 ## Filters
 
-<a id="tokenize"></a>
+<a id="anglicize"></a>
 ### anglicize: *true*
 Anglicize a string
 
@@ -36,6 +36,7 @@ Anglicize a string
 
 ```
 
+<a id="countCharacters"></a>
 ### countCharacters: *true* | *slug* | */regex_expression/*
 Count characters. Options:
   - `true`: all characters, including white spaces
@@ -53,12 +54,13 @@ JBJ.render(stylesheet, console.log);
 
 ```
 
+<a id="countWords"></a>
 ### countWords: see the *tokenized* filter for the arguments
 Count tokenized words
 
 ```javascript
 
-	var stylesheet = {
+  var stylesheet = {
     "set": "L'arbre de Jean-Claude est tombé.",
     "countWords" : true
   };
@@ -67,6 +69,7 @@ Count tokenized words
 
 ```
 
+<a id="tokenize"></a>
 ### tokenize: *true* | *slug* | */regex_expression/*
 Tokenise a string.Options:
   - `true`: split on white spaces and ponctuation, keep dashes and quotes
