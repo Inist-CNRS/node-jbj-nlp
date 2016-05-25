@@ -1,6 +1,6 @@
 {
   "name": "jbj-nlp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Natural text processing for JBJ",
   "main": "lib/index.js",
   "scripts": {
