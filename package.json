@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Inist-CNRS/node-jbj-nlp.git"
+    "url": "https://github.com/Inist-CNRS/node-jbj-nlp.git"
   },
   "keywords": [
     "jbj",
@@ -40,32 +40,5 @@
     "eslint": "~2.2.0",
     "jbj": "^4.1.1",
     "mocha": "^2.4.5"
-  },
-  "gitHead": "95ecddff31e6a55f3ecc956811e9c6cd6ff9fe2d",
-  "_id": "jbj-nlp@1.0.0",
-  "_shasum": "e6d8a2f9ca3adef84a52febe4d074bae16d425ed",
-  "_from": "jbj-nlp@latest",
-  "_npmVersion": "2.14.7",
-  "_nodeVersion": "4.2.2",
-  "_npmUser": {
-    "name": "parmentf",
-    "email": "francois.parmentier@gmail.com"
-  },
-  "maintainers": [
-    {
-      "name": "parmentf",
-      "email": "francois.parmentier@gmail.com"
-    }
-  ],
-  "dist": {
-    "shasum": "e6d8a2f9ca3adef84a52febe4d074bae16d425ed",
-    "tarball": "https://registry.npmjs.org/jbj-nlp/-/jbj-nlp-1.0.0.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/jbj-nlp-1.0.0.tgz_1463756002535_0.801757849752903"
-  },
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/jbj-nlp/-/jbj-nlp-1.0.0.tgz",
-  "readme": "ERROR: No README data found!"
+  }
 }
