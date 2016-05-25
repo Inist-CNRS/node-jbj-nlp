@@ -1,6 +1,6 @@
 # Natural language processing for JBJ
 
-Add filters to JBJ ... see [https://github.com/castorjs/node-jbj](https://github.com/castorjs/node-jbj)
+Add filters to [JBJ](https://github.com/castorjs/node-jbj).
 
 # Installation
 
@@ -13,10 +13,9 @@ With [npm](http://npmjs.org) do:
 ## Usage
 
 ```javascript
-	var JBJ = require('jbj');
+var JBJ = require('jbj');
 
-	JBJ.use(require('jbj-nlp'));
-
+JBJ.use(require('jbj-nlp'));
 ```
 
 ## Filters
@@ -27,12 +26,12 @@ Anglicize a string
 
 ```javascript
 
-	var stylesheet = {
-    "set": "ÂÇİĞÖŞÜÑ âçığöşüñ",
-    "anglicize": true
-  };
-  JBJ.render(stylesheet, console.log);
-  // ACIGOSUN acigosun
+var stylesheet = {
+  "set": "ÂÇİĞÖŞÜÑ âçığöşüñ",
+  "anglicize": true
+};
+JBJ.render(stylesheet, console.log);
+// ACIGOSUN acigosun
 
 ```
 
@@ -60,12 +59,12 @@ Count tokenized words
 
 ```javascript
 
-  var stylesheet = {
-    "set": "L'arbre de Jean-Claude est tombé.",
-    "countWords" : true
-  };
-  JBJ.render(stylesheet, console.log);
-  // 6
+var stylesheet = {
+  "set": "L'arbre de Jean-Claude est tombé.",
+  "countWords" : true
+};
+JBJ.render(stylesheet, console.log);
+// 6
 
 ```
 
@@ -78,11 +77,27 @@ Tokenise a string.Options:
 
 ```javascript
 
-	var stylesheet = {
-    "set": "L'arbre de Jean-Claude est tombé.",
-    "tokenize" : true
-  };
-  JBJ.render(stylesheet, console.log);
-  // ["L'","arbre","de","Jean-Claude","est","tombé"]
+var stylesheet = {
+  "set": "L'arbre de Jean-Claude est tombé.",
+  "tokenize" : true
+};
+JBJ.render(stylesheet, console.log);
+// ["L'","arbre","de","Jean-Claude","est","tombé"]
+
+```
+
+<a id="metaphone"></a>
+### metaphone
+
+Gives a phonetics approximate to the *input* string.
+
+```javascript
+
+var stylesheet = {
+  "set": "Psychologue",
+  "metaphone" : true
+};
+JBJ.render(stylesheet, console.log);
+// PSXLK
 
 ```
