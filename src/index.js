@@ -1,4 +1,5 @@
 import anglicize from 'anglicize';
+import metaphone from 'metaphone';
 
 module.exports = function (exec, execmap) {
   const filters = {};
@@ -10,6 +11,15 @@ module.exports = function (exec, execmap) {
    */
   filters.anglicize = function (input, args, next) {
     return exec(args, () => next(null, anglicize(input)), "anglicize");
+  };
+
+  /**
+   * Metaphone the input, ie. deletes the diacritics
+   * @param {String} input
+   * @return {String} input without vowels and replace consonant by similar strong sound
+   */
+  filters.metaphone = function (input, args, next) {
+    return exec(args, () => next(null, metaphone(input)), "metaphone");
   };
 
   /**
@@ -46,10 +56,12 @@ module.exports = function (exec, execmap) {
    */
   filters.countCharacters = function (input, args, next) {
     return exec(args, function (arg) {
-      if (arg === true) { return next(null, input.length); }
       if (arg === 'slug') { return next(null, input.replace(/-/g, '').length); }
+      if (arg instanceof RegExp) {
+        return next(null, Array.from(input).filter(c => c.match(arg)).length);
+      }
 
-      return next(null, Array.from(input).filter(c => c.match(arg)).length);
+      return next(null, input.length);
     }, "countWords");
   };
 
@@ -65,13 +77,11 @@ module.exports = function (exec, execmap) {
  * @return {Array} tokens
  */
 function tokenize(input, arg) {
-  switch (arg) {
-  case true:
-    arg = /[^a-z0-9äâàéèëêïîöôùüûœç'\-]+/i;
-    break;
-  case 'slug':
+  if (arg === 'slug') {
     arg = /[^a-z0-9]+/i;
-    break;
+  }
+  else if (!(arg instanceof RegExp)) {
+    arg = /[^a-z0-9äâàéèëêïîöôùüûœç'\-]+/i;
   }
 
   let words = input.split(arg);
