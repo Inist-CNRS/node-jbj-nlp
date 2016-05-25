@@ -47,5 +47,12 @@
       "countCharacters": "slug"
     },
     "expected": 26
+  },
+  "Metaphone #1" : {
+    "input": "psychologue",
+    "stylesheet" : {
+      "metaphone": true
+    },
+    "expected" : "PSXLK"
   }
 }
